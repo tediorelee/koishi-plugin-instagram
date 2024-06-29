@@ -1,7 +1,23 @@
 {
   "name": "koishi-plugin-instagram",
   "description": "Koishi plugin for instagram",
-  "version": "0.0.1",
+  "author": {
+    "name": "TEDIORELEE",
+    "email": "tediorelee@gmail.com",
+    "url": "https://github.com/tediorelee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tediorelee/koishi-plugin-instagram.git"
+  },
+  "private": false,
+  "koishi": {
+    "description": {
+      "en": "Koishi plugin for instagram",
+      "zh": "新版instagram解析,支持图片/视频Reels"
+    }
+  },
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
