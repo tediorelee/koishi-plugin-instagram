@@ -45,13 +45,26 @@ export function apply(ctx: Context, config: Config) {
         switch (__typename) {
           case GRAPH_SIDECAR:
             const { edges } = result.edge_sidecar_to_children
-            edges.forEach(async item => {
-              if (item.node.is_video) {
-                await session.send(h.video(item.node.video_url))
-              } else {
-                await session.send(h.image(item.node.display_url))
-              }
-            })
+            
+            if (edges.length > 3) {
+              const forwardMessages = await Promise.all(edges.map(async (item) => {
+                if (item.node.is_video) {
+                  return h.video(item.node.video_url)
+                } else {
+                  return h('img', { src: item.node.display_url })
+                }
+              }));
+              const forwardMessage = h('message', { forward: true, children: forwardMessages });
+              await session.send(forwardMessage);
+            } else {
+              edges.forEach(async item => {
+                if (item.node.is_video) {
+                  await session.send(h.video(item.node.video_url))
+                } else {
+                  await session.send(h.image(item.node.display_url))
+                }
+              })
+            }
             break
           case GRAPH_IMAGE:
             session.send(h.image(result.display_url))

@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tediorelee/koishi-plugin-instagram.git"
+    "url": "git+https://github.com/tediorelee/koishi-plugin-instagram"
   },
   "private": false,
   "koishi": {
@@ -17,7 +17,7 @@
       "zh": "新版instagram解析,支持图片/视频Reels"
     }
   },
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
